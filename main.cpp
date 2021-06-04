@@ -65,52 +65,7 @@ GLuint loadTexture(Image *image)
 GLuint _textureId; //The id of the texture
 
 //Initializes 3D rendering
-GLfloat m=0.0; 
-void initRendering()
-{   
 
-    if (m==1){
-
-        Image *image = loadBMP("images/floor.bmp");
-        _textureId = loadTexture(image);
-        delete image;}
-        else if (m==9)
-        {
-            Image *image = loadBMP("images/buz.bmp");
-            _textureId = loadTexture(image);
-            delete image;
-        }
-          
-        else {
-            Image *image = loadBMP("images/wood.bmp");
-            _textureId = loadTexture(image);
-            delete image;
-        }
-	
-	
-	// Turn on the power
-	glEnable(GL_LIGHTING);
-	// Flip light switch
-	glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHT1);
-	// assign light parameters
-	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-	glLightfv(GL_LIGHT1, GL_AMBIENT, light_ambient);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, light_specular);
-	// Material Properties
-	GLfloat lightColor1[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
-	glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor1);
-	glEnable(GL_NORMALIZE);
-	//Enable smooth shading
-	glShadeModel(GL_SMOOTH);
-	// Enable Depth buffer
-	glEnable(GL_DEPTH_TEST);
-}
 /////////////////
 
 void rotatePoint(double a[], double theta, double p[])
@@ -897,31 +852,24 @@ void reset(){
     }
 
 }
-void screan_menu( int value)
+GLfloat m=0.0; 
+void screan_menu( int m)
 { 
-    // switch (value)
-    // {
-    // case '1':
-    //     Image *image = loadBMP("images/floor.bmp");
-    //     _textureId = loadTexture(image);
-    //     delete image;
-    //     break;
-    // case '2':
-    //     Image *image = loadBMP("images/buz.bmp");
-    //     _textureId = loadTexture(image);
-    //     delete image;
-    //     break;
-    // case '3':
-    //     Image *image = loadBMP("images/wood.bmp");
-    //     _textureId = loadTexture(image);
-    //     delete image;
-    //     break;    
+    switch (m)
+    {
+    case '1':
+        m=0.0 ;
+    case '2':
+        m=1.0 ;
+    case '3':
+        m=9.0 ;
+        break;    
 
-    // default:
-    // //     break;
-    // }
-    // reset();
-    // glutPostRedisplay();
+    default:
+        break;
+    };
+    //reset();
+    glutPostRedisplay();
 
 }
 void attachMenu(){
@@ -933,6 +881,52 @@ void attachMenu(){
     glutAddMenuEntry ("floor",1);
     glutAttachMenu (GLUT_RIGHT_BUTTON);
 
+}
+
+void initRendering()
+{   
+
+    if (m ==1){
+
+        Image *image = loadBMP("images/floor.bmp");
+        _textureId = loadTexture(image);
+        delete image;}
+        else if (m==9)
+        {
+            Image *image = loadBMP("images/buz.bmp");
+            _textureId = loadTexture(image);
+            delete image;
+        }
+          
+        else {
+            Image *image = loadBMP("images/wood.bmp");
+            _textureId = loadTexture(image);
+            delete image;
+        }
+	
+	
+	// Turn on the power
+	glEnable(GL_LIGHTING);
+	// Flip light switch
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+	// assign light parameters
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT1, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, light_specular);
+	// Material Properties
+	GLfloat lightColor1[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
+	glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor1);
+	glEnable(GL_NORMALIZE);
+	//Enable smooth shading
+	glShadeModel(GL_SMOOTH);
+	// Enable Depth buffer
+	glEnable(GL_DEPTH_TEST);
 }
 
 int main(int argc, char** argv)
