@@ -9,6 +9,8 @@
 #include <GL/glut.h>
 #include <math.h>
 #include <stdio.h>
+#include <math.h>
+#include "glm.h"
 
 #include "imageloader.h"
 
@@ -24,7 +26,7 @@ int windowWidth;
 int windowHeight;
 int fingerBase1[5] = { 0 }, fingerUp1[5] = { 0 };
 int fingerBase2[5] = { 0 }, fingerUp2[5] = { 0 };
-
+char *modelname = "al.obj";
 GLfloat angle = 0.0;   /* in degrees */
 GLfloat angle2 = 0.0;   /* in degrees */
 int poses[5][11]={{15,15,20,0,0,0,0,0,0,0,0},
@@ -34,6 +36,17 @@ int poses[5][11]={{15,15,20,0,0,0,0,0,0,0,0},
                   {-3,3,0,0,-6,15,-10,0,-15,0,-10}
 
 };
+
+void drawmodel(char *filename)
+{
+	GLMmodel *model = glmReadOBJ(filename);
+	glmUnitize (model  );
+    glmUnitize (model);
+	glmFacetNormals(model);
+	glmVertexNormals(model, 90.0);
+	glmScale(model, .15);
+	glmDraw(model, GLM_SMOOTH | GLM_MATERIAL);
+}
 ////////////// render
 // RGBA
 GLfloat light_ambient[] = {0.0, 0.0, 0.0, 0.0};
@@ -181,10 +194,10 @@ void display(void)
 
 	glBegin(GL_QUADS);
 	glNormal3f(0.0, 1.0, 0.0);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.5, -0.5,  1);
-	glTexCoord2f(3.0f, 0.0f); glVertex3f( 0.5, -0.5,  1);
-	glTexCoord2f(3.0f, 3.0f); glVertex3f( .5, -.5, -1);
-	glTexCoord2f(0.0f, 3.0f); glVertex3f(-.5, -.5, -1);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.5, -0.1,  1);
+	glTexCoord2f(7.0f, 0.0f); glVertex3f( 0.5, -0.1,  1);
+	glTexCoord2f(7.0f, 7.0f); glVertex3f( 0.5, -0.1, -1);
+	glTexCoord2f(0.0f, 7.0f); glVertex3f(-0.5, -0.1, -1);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
@@ -193,7 +206,7 @@ void display(void)
     glPushMatrix();             /* DRAWING STACK */
     //gluLookAt(eye[0], eye[1], eye[2], center[0], center[1], center[2], up[0], up[1], up[2]);
     glScalef(0.2, 0.2, 0.2);
-    glTranslated(0.0,0.0,5.0);
+    glTranslated(0.0,0.0,10.0);
     glRotatef(angle2, 1.0, 0.0, 0.0);
     glRotatef(angle, 0.0, 1.0, 0.0);
     glTranslatef(0.0, 2.0, 1.0);
@@ -201,7 +214,11 @@ void display(void)
     glScalef(2.0, 3.0, 1.0);    
     glutWireCube(1.0);          /* drawing the actual body center */
     glPopMatrix();              /* BODY STACK */
-
+    // Read our .obj file
+    // std::vector< glm::vec3 > vertices;
+    // std::vector< glm::vec2 > uvs;
+    // std::vector< glm::vec3 > normals; // Won't be used at the moment.
+    // bool res = loadOBJ("cube.obj", vertices, uvs, normals);
     /*******************************************************
      *                        HEAD                         *
     ********************************************************/
@@ -337,14 +354,13 @@ void display(void)
     glutSolidCube(1.0);          /* drawing the actual ankle */
     glPopMatrix();              /* LOWER LEG 2 STACK */
     glPopMatrix();              /* LEG 2 STACK */
-
+    
     glPopMatrix();              /* DRAWING STACK */
     ///
     
 	
-    
-	
     ///
+    
     glutSwapBuffers(); /* Swap buffers after creating the draw */
 }
 
@@ -852,24 +868,24 @@ void reset(){
     }
 
 }
-int  m=9; 
+int  m=0; 
 void screan_menu( int m)
 { 
-    switch (m)
-    {
-    case 1 :
-        m=0 ;
-    case 2 :
-        m=1;
-    case 3 :
-        m=9 ;
-        break;    
+    // switch (m)
+    // {
+    // case '1' :
+    //     Image *image = loadBMP("images/floor.bmp");
+    // case '2' :
+    //     Image *image = loadBMP("images/floor.bmp");
+    // case '3' :
+    //     Image *image = loadBMP("images/floor.bmp");
+    //     break;    
 
-    default:
-        break;
-    };
-    //reset();
-    glutPostRedisplay();
+    // default:
+    //     break;
+    // };
+    // //reset();
+    // glutPostRedisplay();
 
 }
 void attachMenu(){
@@ -903,7 +919,7 @@ void initRendering()
             _textureId = loadTexture(image);
             delete image;
         }
-	
+
 	
 	// Turn on the power
 	glEnable(GL_LIGHTING);
@@ -929,6 +945,8 @@ void initRendering()
 	glEnable(GL_DEPTH_TEST);
 }
 
+
+
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
@@ -943,10 +961,12 @@ int main(int argc, char** argv)
     attachMenu();
     glutMouseFunc(mouse);
     glutMotionFunc(motion);
-    glutDisplayFunc(display);
+    //glutDisplayFunc(display);
+    drawmodel(modelname);
     glutReshapeFunc(reshape);
     glutKeyboardFunc(keyboard);
     glutTimerFunc(0,timer,0);
+    
     glutMainLoop();
     return 0;
 }
