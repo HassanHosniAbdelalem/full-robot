@@ -899,29 +899,29 @@ void reset(){
 }
 void screan_menu( int value)
 { 
-    switch (value)
-    {
-    case '1':
-        Image *image = loadBMP("images/floor.bmp");
-        _textureId = loadTexture(image);
-        delete image;
-        break;
-    case '2':
-        Image *image = loadBMP("images/buz.bmp");
-        _textureId = loadTexture(image);
-        delete image;
-        break;
-    case '3':
-        Image *image = loadBMP("images/wood.bmp");
-        _textureId = loadTexture(image);
-        delete image;
-        break;    
+    // switch (value)
+    // {
+    // case '1':
+    //     Image *image = loadBMP("images/floor.bmp");
+    //     _textureId = loadTexture(image);
+    //     delete image;
+    //     break;
+    // case '2':
+    //     Image *image = loadBMP("images/buz.bmp");
+    //     _textureId = loadTexture(image);
+    //     delete image;
+    //     break;
+    // case '3':
+    //     Image *image = loadBMP("images/wood.bmp");
+    //     _textureId = loadTexture(image);
+    //     delete image;
+    //     break;    
 
-    default:
-        break;
-    }
-    reset();
-    glutPostRedisplay();
+    // default:
+    // //     break;
+    // }
+    // reset();
+    // glutPostRedisplay();
 
 }
 void attachMenu(){
