@@ -852,17 +852,17 @@ void reset(){
     }
 
 }
-GLfloat m=0.0; 
+int  m=9; 
 void screan_menu( int m)
 { 
     switch (m)
     {
-    case '1':
-        m=0.0 ;
-    case '2':
-        m=1.0 ;
-    case '3':
-        m=9.0 ;
+    case 1 :
+        m=0 ;
+    case 2 :
+        m=1;
+    case 3 :
+        m=9 ;
         break;    
 
     default:
@@ -874,11 +874,11 @@ void screan_menu( int m)
 }
 void attachMenu(){
     glutCreateMenu (screan_menu);
-    glutAddMenuEntry ("model",0);
+    glutAddMenuEntry ("carpet menu",0);
     glutAddMenuEntry ("",0);
-    glutAddMenuEntry ("wood",3);
+    glutAddMenuEntry ("wood",1);
     glutAddMenuEntry ("buz",2);
-    glutAddMenuEntry ("floor",1);
+    glutAddMenuEntry ("floor",3);
     glutAttachMenu (GLUT_RIGHT_BUTTON);
 
 }
