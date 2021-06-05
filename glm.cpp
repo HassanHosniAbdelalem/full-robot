@@ -12,8 +12,8 @@
 */
 
 
-#include <math.h>
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
@@ -184,7 +184,7 @@ glmAddGroup(GLMmodel* model, char* name)
     group = glmFindGroup(model, name);
     if (!group) {
         group = (GLMgroup*)malloc(sizeof(GLMgroup));
-        group->name = strdup(name);
+        group->name = _strdup(name);
         group->material = 0;
         group->numtriangles = 0;
         group->triangles = NULL;
@@ -231,7 +231,7 @@ glmDirName(char* path)
     char* dir;
     char* s;
     
-    dir = strdup(path);
+    dir = _strdup(path);
     
     s = strrchr(dir, '/');
     if (s)
@@ -313,7 +313,7 @@ glmReadMTL(GLMmodel* model, char* name)
         model->materials[i].specular[2] = 0.0;
         model->materials[i].specular[3] = 1.0;
     }
-    model->materials[0].name = strdup("default");
+    model->materials[0].name = _strdup("default");
     
     /* now, read in the data */
     nummaterials = 0;
@@ -327,7 +327,7 @@ glmReadMTL(GLMmodel* model, char* name)
             fgets(buf, sizeof(buf), file);
             sscanf(buf, "%s %s", buf, buf);
             nummaterials++;
-            model->materials[nummaterials].name = strdup(buf);
+            model->materials[nummaterials].name = _strdup(buf);
             break;
         case 'N':
             fscanf(file, "%f", &model->materials[nummaterials].shininess);
@@ -442,7 +442,8 @@ glmFirstPass(GLMmodel* model, FILE* file)
     char buf[128];
     
     /* make a default group */
-    group = glmAddGroup(model, "default");
+    char argument[] = "default";
+    group = glmAddGroup(model, argument);
     
     numvertices = numnormals = numtexcoords = numtriangles = 0;
     while(fscanf(file, "%s", buf) != EOF) {
@@ -477,7 +478,7 @@ glmFirstPass(GLMmodel* model, FILE* file)
             case 'm':
                 fgets(buf, sizeof(buf), file);
                 sscanf(buf, "%s %s", buf, buf);
-                model->mtllibname = strdup(buf);
+                model->mtllibname = _strdup(buf);
                 glmReadMTL(model, buf);
                 break;
             case 'u':
@@ -1314,7 +1315,7 @@ glmReadOBJ(char* filename)
     
     /* allocate a new model */
     model = (GLMmodel*)malloc(sizeof(GLMmodel));
-    model->pathname    = strdup(filename);
+    model->pathname    = _strdup(filename);
     model->mtllibname    = NULL;
     model->numvertices   = 0;
     model->vertices    = NULL;
