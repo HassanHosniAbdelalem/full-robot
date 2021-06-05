@@ -127,4 +127,4 @@ def open_folder():
 
 ## Issues
 -----
-- couldn't set the step in the RGB sliders to be 0.1 since the range for each slider id from 0 to 1, instead change the range to be form 0 to 10 and put the step to be 1, then divide the current values of the sliders by 10 when using them in `AddRGBPoint()` function.
+- couldn't set the step in the RGB sliders to be 0.1 since the range for each slider is from 0 to 1, instead we changed the range to be form 0 to 10 and with a step equal to 1, then divide the current values of the sliders by 10 when using them in `AddRGBPoint()` function, so if the green comp. slider value is 5 initially this means that the green component is 0.5 initially.
