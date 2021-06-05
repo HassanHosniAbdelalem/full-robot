@@ -4,23 +4,23 @@
 ## Screenshots
 ---------
 ### Choosing the dataset to render
-[!1](../main/Part2/screenshots/1.png)
+![1](../main/Part2/screenshots/1.png)
 ### Rendering the head dataset (ISO = 500 and reder mode = surface by default)
-[!2](screenshots/2.png)
+![2](screenshots/2.png)
 ### ISO value = 0 (showing skin) for the rendered head
-[!3](screenshots/3.png)
+![3](screenshots/3.png)
 ### ISO value = 1045 for the rendered head in surface rendering mode
-[!4](screenshots/4.png)
+![4](screenshots/4.png)
 ### Choosing ankle dataset to be rendered and settting ISO valueto 0
-[!5](screenshots/5.png)
+![5](screenshots/5.png)
 ### Changing redering mode to ray casting for the rendered head (RGB = (1.0, 0.5, 0.3) by default)
-[!6](screenshots/6.png)
+![6](screenshots/6.png)
 ### Setting RGB to (1.0, 1.0, 1.0) for the rendered head in ray casting redering mode
-[!7](screenshots/7.png)
+![7](screenshots/7.png)
 ### Setting RGB to (0.5, 0.0, 0.0) for the rendered head in ray casting redering mode
-[!8](screenshots/8.png)
+![8](screenshots/8.png)
 ### Setting RGB to (0.0, 0.5, 0.3) for the rendered ankle in ray casting redering mode
-[!9](screenshots/9.png)
+!!9](screenshots/9.png)
 
 ## Code Snippits
 ---------
