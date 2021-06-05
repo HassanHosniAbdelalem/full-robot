@@ -13,14 +13,14 @@
 ![4](screenshots/4.png)
 ### Choosing ankle dataset to be rendered and settting ISO valueto 0
 ![5](screenshots/5.png)
-### Changing redering mode to ray casting for the rendered head (RGB = (1.0, 0.5, 0.3) by default)
+### Changing rendering mode to ray casting for the rendered head (RGB = (1.0, 0.5, 0.3) by default)
 ![6](screenshots/6.png)
 ### Setting RGB to (1.0, 1.0, 1.0) for the rendered head in ray casting redering mode
 ![7](screenshots/7.png)
 ### Setting RGB to (0.5, 0.0, 0.0) for the rendered head in ray casting redering mode
 ![8](screenshots/8.png)
 ### Setting RGB to (0.0, 0.5, 0.3) for the rendered ankle in ray casting redering mode
-!!9](screenshots/9.png)
+![9](screenshots/9.png)
 
 ## Code Snippits
 ---------
