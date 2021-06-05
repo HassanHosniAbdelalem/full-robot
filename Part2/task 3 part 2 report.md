@@ -4,7 +4,7 @@
 ## Screenshots
 ---------
 ### Choosing the dataset to render
-[!1](screenshots/1.png)
+[!1](../screenshots/1.png)
 ### Rendering the head dataset (ISO = 500 and reder mode = surface by default)
 [!2](screenshots/2.png)
 ### ISO value = 0 (showing skin) for the rendered head
