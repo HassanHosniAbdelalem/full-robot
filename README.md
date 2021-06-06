@@ -10,19 +10,6 @@ this project is an extension of <a href="https://github.com/HassanHosniAbdelalem
 
 we made an animation movement for our body object and setup a surrounding environment (e.g. carpet, lamp, officeChair...) then applied two light sources and lighting effects on the scene and controled the texture mapping of some objects like the carpet with attached small menu (opened with right click), all the view controls of the previous project are also included (e.g. zooming in/out, looking up/down, looking left/right, reshaping the window...)
 
-<style>
-    .flex-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    }
-    .flex-container > div {
-    margin: 10px;
-    height: 300px;
-    width: 300px;
-    }
-</style>
-
 ## Sample Results
 ### texturing and menu
 <div class="flex-container">
@@ -41,6 +28,7 @@ we made an animation movement for our body object and setup a surrounding enviro
   <div><img src = "screenshots/lookright.png"></div> 
   <div><img src = "screenshots/backview.png"></div> 
 </div>
+
 ### animation and interaction
 <div class="flex-container">
   <div><img src = "screenshots/backword.png"></div>
